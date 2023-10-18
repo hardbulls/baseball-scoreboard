@@ -1,0 +1,46 @@
+{
+  "name": "@hardbulls/baseball-scoreboard",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Web Component that displays a baseball scoreboard for usage in live streams.",
+  "main": "dist/main.mjs",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "start": "vite --host --port 3000",
+    "build": "tsc && vite build",
+    "cs": "eslint src --ext ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hardbulls/baseball-scoreboard.git"
+  },
+  "keywords": [
+    "baseball",
+    "scoreboard",
+    "bulls",
+    "baseball"
+  ],
+  "author": "Arjan Frans",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hardbulls/baseball-scoreboard/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/hardbulls/baseball-scoreboard#readme",
+  "dependencies": {
+    "lit": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.7.1",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "typescript": "^5.2.2",
+    "eslint": "^8.51.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "vite": "^4.5.0",
+    "vite-plugin-checker": "^0.6.2",
+    "vite-plugin-dts": "^3.6.0"
+  }
+}
