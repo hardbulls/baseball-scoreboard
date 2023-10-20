@@ -7,7 +7,7 @@ Great for usage in a live ticker web application.
 
 Install with `npm install @hardbulls/baseball-scoreboard`.
 
-See `./index.html`.
+See [index.html](./index.html) for example usage.
 
 ## Demo
 
@@ -17,5 +17,5 @@ https://hardbulls.github.io/baseball-scoreboard
 
 ## Development
 
-`npm install`
+`npm install`  
 `npm start`
