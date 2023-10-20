@@ -178,9 +178,3 @@ export class BaseballScoreboard extends LitElement {
         `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "baseball-scoreboard": BaseballScoreboard;
-  }
-}

@@ -12,22 +12,24 @@ export const Bases = ({ activeBaseColor, inactiveBaseColor, bases }: Props) => {
 
   return html`
     <div class="base-container">
-      <div class="base-rotate-wrapper">
-        <div
-          id="first-base"
-          style="${bases[0] ? activeBaseStyle : inactiveBaseStyle}"
-          class="base"
-        ></div>
-        <div
-          id="second-base"
-          style="${bases[1] ? activeBaseStyle : inactiveBaseStyle}"
-          class="base"
-        ></div>
-        <div
-          id="third-base"
-          style="${bases[2] ? activeBaseStyle : inactiveBaseStyle}"
-          class="base"
-        ></div>
+      <div class="base-3d-wrapper">
+        <div class="base-rotate-wrapper">
+          <div
+            id="first-base"
+            style="${bases[0] ? activeBaseStyle : inactiveBaseStyle}"
+            class="base"
+          ></div>
+          <div
+            id="second-base"
+            style="${bases[1] ? activeBaseStyle : inactiveBaseStyle}"
+            class="base"
+          ></div>
+          <div
+            id="third-base"
+            style="${bases[2] ? activeBaseStyle : inactiveBaseStyle}"
+            class="base"
+          ></div>
+        </div>
       </div>
     </div>
   `;

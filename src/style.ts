@@ -11,8 +11,14 @@ export const Style = css`
     justify-content: space-between;
   }
   .base-container {
-    width: 120px;
+    width: 136px;
     padding-top: 8px;
+    perspective: 100px;
+  }
+
+  .base-3d-wrapper {
+    transform-style: preserve-3d;
+    transform: rotateX(20deg);
   }
 
   .base-rotate-wrapper {
@@ -24,6 +30,7 @@ export const Style = css`
     position: absolute;
     width: 32px;
     height: 32px;
+    box-shadow: inset 0 0 5px black;
   }
 
   #second-base {
