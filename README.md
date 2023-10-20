@@ -14,3 +14,8 @@ See `./index.html`.
 https://hardbulls.github.io/baseball-scoreboard
 
 ![Baseball Scoreboard Preview](./.github/preview.png)
+
+## Development
+
+`npm install`
+`npm start`
