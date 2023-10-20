@@ -1,6 +1,7 @@
 # Baseball Scoreboard
 
-A customizable Baseball Scoreboard as a web component.
+Customizable Baseball Scoreboard as a web component. 
+Great for usage in a live ticker web application.
 
 ## Usage
 
@@ -12,4 +13,4 @@ See `./index.html`.
 
 https://hardbulls.github.com/baseball-scoreboard
 
-![Baseball Scoreboard Preview](./github/preview.png)
+![Baseball Scoreboard Preview](./.github/preview.png)
