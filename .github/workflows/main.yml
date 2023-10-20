@@ -26,10 +26,7 @@ jobs:
     - name: Build
       run: |
         npm ci
-        npm run build
-        mkdir -p ./dist/src
-        mv ./dist/* ./dist/src
-        cp index.html dist
+        BASE_PATH=https://hardbulls.github.io/baseball-scoreboard/ npm run build:static
     - name: Setup Pages
       uses: actions/configure-pages@v3
     - name: Upload artifact

@@ -3,7 +3,7 @@ import checker from "vite-plugin-checker";
 import dts from 'vite-plugin-dts';
 import {resolve} from 'path'
 
-export default defineConfig({
+const libConfig = defineConfig({
     plugins: [
         dts({
             include: [
@@ -22,3 +22,15 @@ export default defineConfig({
         }
     }
 });
+
+const staticConfig = defineConfig({
+    base: process.env.BASE_PATH ?? '/',
+    plugins: [
+        checker({
+            typescript: true
+        })
+    ],
+});
+
+
+export default process.env.TARGET === 'static' ? staticConfig : libConfig

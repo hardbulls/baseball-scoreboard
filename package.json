@@ -7,6 +7,7 @@
   "types": "dist/main.d.ts",
   "scripts": {
     "start": "vite --host --port 3000",
+    "build:static": "tsc && TARGET=static vite build",
     "build": "tsc && vite build",
     "cs": "eslint src --ext ts --fix"
   },
@@ -34,11 +35,11 @@
   },
   "devDependencies": {
     "@types/node": "^20.7.1",
-    "@vitejs/plugin-react-swc": "^3.3.2",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "typescript": "^5.2.2",
+    "@vitejs/plugin-react-swc": "^3.3.2",
     "eslint": "^8.51.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vite-plugin-checker": "^0.6.2",
     "vite-plugin-dts": "^3.6.0"

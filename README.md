@@ -11,6 +11,6 @@ See `./index.html`.
 
 ## Demo
 
-https://hardbulls.github.com/baseball-scoreboard
+https://hardbulls.github.io/baseball-scoreboard
 
 ![Baseball Scoreboard Preview](./.github/preview.png)
