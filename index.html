@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.5em;
-            padding-left: 0.5em;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Teko&display=swap" rel="stylesheet">
 </head>
 <body>
 <baseball-scoreboard awayLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
                      homeLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
                      hideCounts="false"
                      hideBases="false"
+                     fontName="Jura"
+                     fontLineHeight="1.10"
                      bases="false,true,true"
                      inning="1.5"
-                     homeScore="1" awayScore="3"></baseball-scoreboard>
+                     homeScore="1"
+                     awayScore="3"></baseball-scoreboard>
 <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

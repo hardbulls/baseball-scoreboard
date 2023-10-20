@@ -93,6 +93,12 @@ export class BaseballScoreboard extends LitElement {
   @property()
   fontLineHeight = 1.15;
 
+  @property()
+  borderColor = "#000000";
+
+  @property()
+  borderSize = "3px";
+
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
 
@@ -114,15 +120,18 @@ export class BaseballScoreboard extends LitElement {
     const hideBases = this.hideBases === "true";
     const hideCounts = this.hideCounts === "true";
 
+    console.log(this.borderColor);
     return html`
             <div style="font-family: ${
               this.fontName
             }, sans-serif; font-size: 32px; display: flex; line-height: ${
               this.fontLineHeight
             }">
-                <div style="background: ${generateGradient(
-                  backgroundGradient,
-                )}; border: 2px solid #666; display: flex">
+                <div style="
+                  background: ${generateGradient(backgroundGradient)}; 
+                border: ${this.borderSize} solid ${
+                  this.borderColor
+                }; display: flex">
                 ${ScoreContainer({
                   homeScore: this.homeScore,
                   awayScore: this.awayScore,

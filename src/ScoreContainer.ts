@@ -63,7 +63,7 @@ export const ScoreContainer = ({
     <div class="score-container">
       <div
         style="display: flex; background: ${generateGradient(awayGradient)}"
-        class="score-row"
+        class="score-row-top"
       >
         <div class="away-logo logo">${awayLogo}</div>
         <div class=" name-away score-name" style="color: ${fontColorLight}">
@@ -81,7 +81,7 @@ export const ScoreContainer = ({
 
       <div
         style="display: flex; background: ${generateGradient(homeGradient)}"
-        class="score-row"
+        class="score-row-bottom"
       >
         <div class="home-logo logo">${homeLogo}</div>
 

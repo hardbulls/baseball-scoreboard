@@ -1,18 +1,23 @@
 import { css } from "lit";
 
 export const Style = css`
+  :host {
+    --space: 3px;
+  }
+
   .score-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+  .base-container {
+    width: 120px;
+    padding-top: 8px;
+  }
 
   .base-rotate-wrapper {
     position: relative;
-    width: 64px;
-    height: 64px;
-    margin: 24px -8px 8px 54px;
-    transform: translateX(-50%) rotate(45deg);
+    transform: rotate(45deg) translateX(50%);
   }
 
   .base {
@@ -36,14 +41,21 @@ export const Style = css`
     top: 0;
   }
 
-  .score-row {
+  .score-row-top {
+    justify-content: space-between;
+    height: 45px;
+    margin-bottom: var(--space);
+  }
+
+  .score-row-bottom {
     justify-content: space-between;
     height: 45px;
   }
 
   .score-name {
     width: 100%;
-    padding: 6px;
+    padding-top: 3px;
+    padding-inline: 6px;
     filter: drop-shadow(2px 2px 2px black);
   }
 
@@ -59,8 +71,7 @@ export const Style = css`
     width: 38px;
     padding-left: 6px;
     padding-right: 6px;
-    margin-left: 6px;
-    margin-right: 6px;
+    margin-inline: var(--space);
     position: relative;
     box-sizing: revert !important;
     display: flex;
@@ -86,13 +97,13 @@ export const Style = css`
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    margin-left: 6px;
   }
 
   .counts-top {
     padding-left: 6px;
     padding-right: 6px;
     height: 45px;
+    margin-bottom: var(--space);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
