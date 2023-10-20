@@ -1,6 +1,6 @@
 {
   "name": "@hardbulls/baseball-scoreboard",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "description": "Web Component that displays a baseball scoreboard for usage in live streams.",
   "main": "dist/main.mjs",

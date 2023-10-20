@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Teko&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Teko&display=swap" rel="stylesheet">
 </head>
 <body>
-<baseball-scoreboard awayLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
-                     homeLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
-                     hideCounts="false"
-                     hideBases="false"
-                     fontName="Jura"
-                     fontLineHeight="1.10"
-                     bases="false,true,true"
-                     inning="1.5"
-                     homeScore="1"
-                     awayScore="3"></baseball-scoreboard>
+<div style="display: flex; justify-content: center">
+  <baseball-scoreboard
+    awayLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
+    homeLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
+    hideCounts="false"
+    hideBases="false"
+    fontName="Jura"
+    fontLineHeight="1.10"
+    bases="false,true,true"
+    inning="1.5"
+    homeScore="8"
+    awayScore="3"
+    homeScore="0"
+    balls="2"
+    strikes="1"
+    outs="2"
+    awayScore="0"
+    inning="1.0"
+    awayGradient="180,#1653af,#063376,30,50"
+    homeGradient="180,#ff2222,#ea1010,30,50"
+    layoutGradient="180,#ebebeb,#e0e0e0,50,50"
+    backgroundGradient="180,#000000,#484848,0,100"
+    fontColorDark="#292929"
+    fontColorLight="#e8e8e8"
+    awayLogoShadow="#575757"
+    homeLogoShadow="#000000"
+    activeInningColor="#e00000"
+    inactiveInningColor="#b3b3b3"
+    activeBaseColor="#e5c72b"
+    inactiveBaseColor="#b3b3b3"
+    awayName="Away"
+    homeName="Home"
+    fontLineHeight="1.15"
+    borderColor="#000000"
+    borderSize="3px"
+  ></baseball-scoreboard>
+</div>
 <script type="module" src="/src/main.ts"></script>
+
+<footer style="text-align: center">
+  <p>
+    <a href="https://github.com/hardbulls/baseball-scoreboard">Hard Bulls Baseball Scoreboard</a> - <a
+    href="https://www.hardbulls.com">hardbulls.com</a>
+  </p>
+  <p>
+    Copyright &copy; Arjan Frans 2023
+  </p>
+</footer>
 </body>
 </html>

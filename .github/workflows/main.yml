@@ -27,6 +27,7 @@ jobs:
       run: |
         npm ci
         npm run build
+        mkdir -p dist/src cp index.html dist/src
     - name: Setup Pages
       uses: actions/configure-pages@v3
     - name: Upload artifact
