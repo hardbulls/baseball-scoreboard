@@ -21,21 +21,16 @@ const renderInningSvg = (
   activeColor: string,
   inactiveColor: string,
 ) => {
-  const upPoints = "5,0 0,7 10,7";
-  const downPoints = "5,7 10,0 0,0";
+  const color = isCurrent ? activeColor : inactiveColor;
+  let style = `filter: drop-shadow(0px 0px 1px color-mix(in srgb, ${color} 50%, black));`;
 
-  return html`
-    <svg
-      viewBox="0 0 10 7"
-      fill="${isCurrent ? activeColor : inactiveColor}"
-      width="32"
-      height="32"
-    >
-      <polygon
-        points="${direction === ArrowDirection.UP ? upPoints : downPoints}"
-      ></polygon>
-    </svg>
-  `;
+  if (direction === ArrowDirection.UP) {
+    style += ` border-bottom: 22px solid ${color};`;
+  } else {
+    style += ` border-top: 22px solid ${color};`;
+  }
+
+  return html`<div class="inning-indicator-arrow" style=${style}></div>`;
 };
 export const Inning = ({
   inning,

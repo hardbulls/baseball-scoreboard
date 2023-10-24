@@ -99,6 +99,10 @@ export class BaseballScoreboard extends LitElement {
   @property()
   borderSize = "3px";
 
+  @property()
+  backgroundImage =
+    "https://www.hardbulls.com/clubdesk/fileservlet?inline=true&type=image&id=253";
+
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
 
@@ -120,7 +124,6 @@ export class BaseballScoreboard extends LitElement {
     const hideBases = this.hideBases === "true";
     const hideCounts = this.hideCounts === "true";
 
-    console.log(this.borderColor);
     return html`
             <div style="font-family: ${
               this.fontName

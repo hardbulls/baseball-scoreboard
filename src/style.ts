@@ -4,16 +4,16 @@ export const Style = css`
   :host {
     --space: 3px;
   }
-
   .score-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+
   .base-container {
     width: 136px;
     padding-top: 8px;
-    perspective: 100px;
+    perspective: 120px;
   }
 
   .base-3d-wrapper {
@@ -30,7 +30,7 @@ export const Style = css`
     position: absolute;
     width: 32px;
     height: 32px;
-    box-shadow: inset 0 0 5px black;
+    box-shadow: inset 0 0 3px black;
   }
 
   #second-base {
@@ -87,16 +87,21 @@ export const Style = css`
     align-items: center;
   }
 
+  .inning-indicator-arrow {
+    width: 0;
+    height: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+
   .inning-indicator-top {
     position: absolute;
-    top: 0;
-    margin-left: 2px;
+    top: 4px;
   }
 
   .inning-indicator-bottom {
     position: absolute;
-    bottom: -8px;
-    margin-left: 2px;
+    bottom: 4px;
   }
 
   .counts-container {
