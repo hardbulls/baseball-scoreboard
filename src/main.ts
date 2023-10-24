@@ -18,22 +18,22 @@ export class BaseballScoreboard extends LitElement {
   @property()
   hideCounts = "false";
 
-  @property()
+  @property({ type: Number })
   homeScore = 0;
 
-  @property()
+  @property({ type: Number })
   balls = 0;
 
-  @property()
+  @property({ type: Number })
   strikes = 0;
 
-  @property()
+  @property({ type: Number })
   outs = 0;
 
-  @property()
+  @property({ type: Number })
   awayScore = 0;
 
-  @property()
+  @property({ type: Number })
   inning = 1.0;
 
   @property()
@@ -76,6 +76,12 @@ export class BaseballScoreboard extends LitElement {
   inactiveInningColor = "#b3b3b3";
 
   @property()
+  activeOutColor = "#e00000";
+
+  @property()
+  inactiveOutColor = "#b3b3b3";
+
+  @property()
   activeBaseColor = "#e00000";
 
   @property()
@@ -90,7 +96,7 @@ export class BaseballScoreboard extends LitElement {
   @property()
   fontName = "Open Sans";
 
-  @property()
+  @property({ type: Number })
   fontLineHeight = 1.15;
 
   @property()
@@ -102,6 +108,9 @@ export class BaseballScoreboard extends LitElement {
   @property()
   backgroundImage =
     "https://www.hardbulls.com/clubdesk/fileservlet?inline=true&type=image&id=253";
+
+  @property()
+  outsStyle = "dots";
 
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
@@ -172,7 +181,10 @@ export class BaseballScoreboard extends LitElement {
                         balls: this.balls,
                         strikes: this.strikes,
                         outs: this.outs,
+                        activeOutColor: this.activeOutColor,
+                        inactiveOutColor: this.inactiveOutColor,
                         layoutGradient: layoutGradient,
+                        outsStyle: this.outsStyle,
                       })
                     : ""
                 }

@@ -16,6 +16,13 @@ export const Style = css`
     perspective: 120px;
   }
 
+  .outs-dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
   .base-3d-wrapper {
     transform-style: preserve-3d;
     transform: rotateX(20deg);

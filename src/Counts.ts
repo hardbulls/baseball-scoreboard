@@ -1,14 +1,27 @@
 import { generateGradient } from "./generateGradient.ts";
 import { Gradient } from "./Gradient.ts";
 import { html } from "lit";
+import { OutsText } from "./OutsText.ts";
+import { OutsDots } from "./OutsDots.ts";
 
-interface Props {
+type Props = {
   balls: number;
   strikes: number;
   outs: number;
   layoutGradient: Gradient;
-}
-export const Counts = ({ balls, strikes, outs, layoutGradient }: Props) => {
+  outsStyle: string;
+  activeOutColor: string;
+  inactiveOutColor: string;
+};
+export const Counts = ({
+  balls,
+  strikes,
+  outs,
+  layoutGradient,
+  outsStyle,
+  activeOutColor,
+  inactiveOutColor,
+}: Props) => {
   const style = `color: state.displaySettings.fontColorDark; background: ${generateGradient(
     layoutGradient,
   )}`;
@@ -20,10 +33,9 @@ export const Counts = ({ balls, strikes, outs, layoutGradient }: Props) => {
         <span class="count-separator">-</span>
         <span>${strikes}</span>
       </div>
-      <div class="counts-bottom" style=${style}>
-        <span class="outs-count">${outs}</span>
-        <span class="outs-text">out</span>
-      </div>
+      ${outsStyle === "text"
+        ? OutsText({ outs, layoutGradient })
+        : OutsDots({ outs, layoutGradient, activeOutColor, inactiveOutColor })}
     </div>
   `;
 };
