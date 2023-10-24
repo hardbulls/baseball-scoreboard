@@ -15,7 +15,7 @@ enum ArrowDirection {
   DOWN,
 }
 
-const renderInningSvg = (
+const renderInningArrow = (
   direction: ArrowDirection,
   isCurrent: boolean,
   activeColor: string,
@@ -50,7 +50,7 @@ export const Inning = ({
     >
       ${Math.floor(inning)}
       <div class="inning-indicator-top">
-        ${renderInningSvg(
+        ${renderInningArrow(
           ArrowDirection.UP,
           isTop,
           activeInningColor,
@@ -58,7 +58,7 @@ export const Inning = ({
         )}
       </div>
       <div class="inning-indicator-bottom">
-        ${renderInningSvg(
+        ${renderInningArrow(
           ArrowDirection.DOWN,
           !isTop,
           activeInningColor,
