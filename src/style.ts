@@ -3,11 +3,59 @@ import { css } from "lit";
 export const Style = css`
   :host {
     --space: 3px;
+    --half-height: 47px;
   }
-  .score-container {
+  .score-container,
+  .teams-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right: var(--space);
+  }
+
+  .team-logos-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .league-logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .league-logo {
+    height: calc(var(--half-height) * 2);
+  }
+
+  .league-logo img {
+    max-height: calc(var(--half-height) * 2);
+  }
+
+  .team-logo-row {
+    height: var(--half-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .team-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .team-logo img {
+    max-height: var(--half-height);
+  }
+
+  .score-values-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: var(--space);
+    margin-right: var(--space);
   }
 
   .base-container {
@@ -55,29 +103,30 @@ export const Style = css`
     top: 0;
   }
 
-  .score-row-top {
-    justify-content: space-between;
-    height: 45px;
-    margin-bottom: var(--space);
-  }
-
-  .score-row-bottom {
-    justify-content: space-between;
-    height: 45px;
+  .score-row {
+    height: var(--half-height);
   }
 
   .score-name {
-    width: 100%;
-    padding-top: 3px;
-    padding-inline: 6px;
     filter: drop-shadow(2px 2px 2px black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .score-name > span {
+    padding-right: 6px;
+    font-size: 1.3em;
   }
 
   .score-value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    font-weight: bolder;
-    min-width: 46px;
-    padding: 6px;
+    width: 2ch;
+    height: var(--half-height);
+    padding-inline: 6px;
   }
 
   .inning-container {
@@ -85,7 +134,6 @@ export const Style = css`
     width: 38px;
     padding-left: 6px;
     padding-right: 6px;
-    margin-inline: var(--space);
     position: relative;
     box-sizing: revert !important;
     display: flex;
@@ -113,16 +161,17 @@ export const Style = css`
 
   .counts-container {
     display: flex;
+    margin-left: var(--space);
     flex-direction: column;
-    justify-content: space-between;
     text-align: center;
+    justify-content: space-between;
+    row-gap: var(--space);
   }
 
   .counts-top {
     padding-left: 6px;
     padding-right: 6px;
-    height: 45px;
-    margin-bottom: var(--space);
+    height: var(--half-height);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -140,7 +189,7 @@ export const Style = css`
   .counts-bottom {
     padding-left: 6px;
     padding-right: 6px;
-    height: 45px;
+    height: var(--half-height);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -157,10 +206,11 @@ export const Style = css`
 
   .logo {
     padding: 2px;
+    overflow: clip;
   }
 
   .logo img {
-    width: 64px;
+    padding-inline: 6px;
     object-fit: scale-down;
   }
 `;

@@ -1,12 +1,16 @@
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { ScoreContainer } from "./ScoreContainer.ts";
 import { Gradient } from "./Gradient.ts";
 import { Bases } from "./Bases.ts";
 import { Style } from "./style.ts";
 import { Counts } from "./Counts.ts";
 import { generateGradient } from "./generateGradient.ts";
 import { Inning } from "./Inning.ts";
+import { Score } from "./Score.ts";
+import { CountStyle } from "./CountStyle.ts";
+import { LeagueLogo } from "./Logo.ts";
+import { TeamLogos } from "./TeamLogos.ts";
+import { TeamNames } from "./TeamNames.ts";
 
 @customElement("baseball-scoreboard")
 export class BaseballScoreboard extends LitElement {
@@ -70,6 +74,9 @@ export class BaseballScoreboard extends LitElement {
   homeLogoShadow = "#000000";
 
   @property()
+  leagueLogoShadow = "#000000";
+
+  @property()
   activeInningColor = "#e00000";
 
   @property()
@@ -110,7 +117,10 @@ export class BaseballScoreboard extends LitElement {
     "https://www.hardbulls.com/clubdesk/fileservlet?inline=true&type=image&id=253";
 
   @property()
-  outsStyle = "dots";
+  leagueLogoSrc: string | undefined = undefined;
+
+  @property()
+  outsStyle = CountStyle.Dots;
 
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
@@ -144,26 +154,38 @@ export class BaseballScoreboard extends LitElement {
                 border: ${this.borderSize} solid ${
                   this.borderColor
                 }; display: flex">
-                ${ScoreContainer({
-                  homeScore: this.homeScore,
-                  awayScore: this.awayScore,
+                  ${LeagueLogo({
+                    backgroundGradient: backgroundGradient,
+                    leagueLogoSrc: this.leagueLogoSrc,
+                    leagueLogoShadow: this.leagueLogoShadow,
+                  })}
+                  ${TeamLogos({
+                    awayGradient: awayGradient,
+                    homeGradient: homeGradient,
+                    layoutGradient: layoutGradient,
+                    awayLogoSrc: this.awayLogoSrc,
+                    homeLogoSrc: this.homeLogoSrc,
+                    awayLogoShadow: this.awayLogoShadow,
+                    homeLogoShadow: this.homeLogoShadow,
+                  })}
+                ${TeamNames({
                   awayGradient: awayGradient,
                   homeGradient: homeGradient,
-                  layoutGradient: layoutGradient,
-                  fontColorDark: this.fontColorDark,
-                  fontColorLight: this.fontColorLight,
-                  awayLogoSrc: this.awayLogoSrc,
-                  homeLogoSrc: this.homeLogoSrc,
-                  awayLogoShadow: this.awayLogoShadow,
-                  homeLogoShadow: this.homeLogoShadow,
+                  fontColor: this.fontColorLight,
                   awayName: this.awayName,
                   homeName: this.homeName,
+                })}
+                ${Score({
+                  homeScore: this.homeScore,
+                  awayScore: this.awayScore,
+                  fontColorDark: this.fontColorDark,
+                  layoutGradient: layoutGradient,
                 })}
                 ${Inning({
                   layoutGradient: layoutGradient,
                   activeInningColor: this.activeInningColor,
                   inactiveInningColor: this.inactiveInningColor,
-                  fontColorDark: this.fontColorDark,
+                  fontColor: this.fontColorDark,
                   inning: this.inning,
                 })}
                 ${
@@ -183,6 +205,7 @@ export class BaseballScoreboard extends LitElement {
                         outs: this.outs,
                         activeOutColor: this.activeOutColor,
                         inactiveOutColor: this.inactiveOutColor,
+                        fontColorDark: this.fontColorDark,
                         layoutGradient: layoutGradient,
                         outsStyle: this.outsStyle,
                       })

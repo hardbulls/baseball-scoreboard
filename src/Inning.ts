@@ -4,7 +4,7 @@ import { generateGradient } from "./generateGradient.ts";
 
 interface Props {
   inning: number;
-  fontColorDark: string;
+  fontColor: string;
   inactiveInningColor: string;
   activeInningColor: string;
   layoutGradient: Gradient;
@@ -34,7 +34,7 @@ const renderInningArrow = (
 };
 export const Inning = ({
   inning,
-  fontColorDark,
+  fontColor,
   inactiveInningColor,
   activeInningColor,
   layoutGradient,
@@ -44,7 +44,7 @@ export const Inning = ({
   return html`
     <div
       class="inning-container"
-      style="color: ${fontColorDark}; background: ${generateGradient(
+      style="color: ${fontColor}; background: ${generateGradient(
         layoutGradient,
       )}"
     >

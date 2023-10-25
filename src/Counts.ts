@@ -10,6 +10,7 @@ type Props = {
   outs: number;
   layoutGradient: Gradient;
   outsStyle: string;
+  fontColorDark: string;
   activeOutColor: string;
   inactiveOutColor: string;
 };
@@ -19,10 +20,11 @@ export const Counts = ({
   outs,
   layoutGradient,
   outsStyle,
+  fontColorDark,
   activeOutColor,
   inactiveOutColor,
 }: Props) => {
-  const style = `color: state.displaySettings.fontColorDark; background: ${generateGradient(
+  const style = `color: ${fontColorDark}; background: ${generateGradient(
     layoutGradient,
   )}`;
 
