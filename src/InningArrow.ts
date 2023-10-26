@@ -20,5 +20,15 @@ export const InningArrow = (
     style += ` border-top: 22px solid ${color};`;
   }
 
-  return html`<div class="inning-indicator-arrow" style=${style}></div>`;
+  return html`
+    <style>
+      .inning-indicator-arrow {
+        width: 0;
+        height: 0;
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent;
+      }
+    </style>
+    <div class="inning-indicator-arrow" style=${style}></div>
+  `;
 };

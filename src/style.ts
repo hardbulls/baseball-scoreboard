@@ -55,13 +55,6 @@ export const Style = css`
     flex-direction: column;
     justify-content: space-between;
     row-gap: var(--space);
-    margin-right: var(--space);
-  }
-
-  .base-container {
-    width: 136px;
-    padding-top: 8px;
-    perspective: 120px;
   }
 
   .outs-dot {
@@ -69,38 +62,6 @@ export const Style = css`
     width: 25px;
     border-radius: 50%;
     display: inline-block;
-  }
-
-  .base-3d-wrapper {
-    transform-style: preserve-3d;
-    transform: rotateX(20deg);
-  }
-
-  .base-rotate-wrapper {
-    position: relative;
-    transform: rotate(45deg) translateX(50%);
-  }
-
-  .base {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    box-shadow: inset 0 0 3px black;
-  }
-
-  #second-base {
-    left: 0;
-    top: 0;
-  }
-
-  #third-base {
-    left: 0;
-    top: calc(32px + 8px);
-  }
-
-  #first-base {
-    left: calc(32px + 8px);
-    top: 0;
   }
 
   .score-row {
@@ -127,26 +88,6 @@ export const Style = css`
     width: 2ch;
     height: var(--half-height);
     padding-inline: 6px;
-  }
-
-  .inning-container {
-    text-align: center;
-    width: 38px;
-    padding-left: 6px;
-    padding-right: 6px;
-    position: relative;
-    box-sizing: revert !important;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .inning-indicator-arrow {
-    width: 0;
-    height: 0;
-    border-left: 13px solid transparent;
-    border-right: 13px solid transparent;
   }
 
   .inning-indicator-top {

@@ -5,12 +5,13 @@ import { Bases } from "./Bases.ts";
 import { Style } from "./style.ts";
 import { Counts } from "./Counts.ts";
 import { generateGradient } from "./generateGradient.ts";
-import { Inning } from "./Inning.ts";
+import { InningVertical } from "./InningVertical.ts";
 import { Score } from "./Score.ts";
 import { CountStyle } from "./CountStyle.ts";
 import { LeagueLogo } from "./Logo.ts";
 import { TeamLogos } from "./TeamLogos.ts";
 import { TeamNames } from "./TeamNames.ts";
+import { InningStyle } from "./InningStyle.ts";
 
 @customElement("baseball-scoreboard")
 export class BaseballScoreboard extends LitElement {
@@ -23,7 +24,7 @@ export class BaseballScoreboard extends LitElement {
   hideCounts = "false";
 
   @property()
-  hideInning = "false";
+  hideInning = "true";
 
   @property({ type: Number })
   homeScore = 0;
@@ -125,6 +126,9 @@ export class BaseballScoreboard extends LitElement {
   @property()
   outsStyle = CountStyle.Dots;
 
+  @property({ type: InningStyle })
+  inningStyle = InningStyle.Combined;
+
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
 
@@ -157,7 +161,7 @@ export class BaseballScoreboard extends LitElement {
                   background: ${generateGradient(backgroundGradient)}; 
                 border: ${this.borderSize} solid ${
                   this.borderColor
-                }; display: flex">
+                }; display: flex; ">
                   ${LeagueLogo({
                     backgroundGradient: backgroundGradient,
                     leagueLogoSrc: this.leagueLogoSrc,
@@ -186,8 +190,9 @@ export class BaseballScoreboard extends LitElement {
                   layoutGradient: layoutGradient,
                 })}
                 ${
-                  !hideInning
-                    ? Inning({
+                  !hideInning &&
+                  (this.inningStyle === InningStyle.Separate || hideBases)
+                    ? InningVertical({
                         layoutGradient: layoutGradient,
                         activeInningColor: this.activeInningColor,
                         inactiveInningColor: this.inactiveInningColor,
@@ -202,6 +207,10 @@ export class BaseballScoreboard extends LitElement {
                         activeBaseColor: this.activeBaseColor,
                         inactiveBaseColor: this.inactiveBaseColor,
                         bases: bases,
+                        fontColor: this.fontColorLight,
+                        inning: this.inning,
+                        activeInningColor: this.activeInningColor,
+                        showInnings: this.inningStyle === InningStyle.Combined,
                       })
                     : ""
                 }
