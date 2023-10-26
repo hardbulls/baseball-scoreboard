@@ -22,6 +22,9 @@ export class BaseballScoreboard extends LitElement {
   @property()
   hideCounts = "false";
 
+  @property()
+  hideInning = "false";
+
   @property({ type: Number })
   homeScore = 0;
 
@@ -141,6 +144,7 @@ export class BaseballScoreboard extends LitElement {
     const backgroundGradient = this.parseGradient(this.backgroundGradient);
     const bases = this.bases.split(",").map((v) => v === "true");
     const hideBases = this.hideBases === "true";
+    const hideInning = this.hideInning === "true";
     const hideCounts = this.hideCounts === "true";
 
     return html`
@@ -181,13 +185,17 @@ export class BaseballScoreboard extends LitElement {
                   fontColorDark: this.fontColorDark,
                   layoutGradient: layoutGradient,
                 })}
-                ${Inning({
-                  layoutGradient: layoutGradient,
-                  activeInningColor: this.activeInningColor,
-                  inactiveInningColor: this.inactiveInningColor,
-                  fontColor: this.fontColorDark,
-                  inning: this.inning,
-                })}
+                ${
+                  !hideInning
+                    ? Inning({
+                        layoutGradient: layoutGradient,
+                        activeInningColor: this.activeInningColor,
+                        inactiveInningColor: this.inactiveInningColor,
+                        fontColor: this.fontColorDark,
+                        inning: this.inning,
+                      })
+                    : ""
+                }
                 ${
                   !hideBases
                     ? Bases({
