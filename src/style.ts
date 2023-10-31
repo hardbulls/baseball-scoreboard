@@ -5,6 +5,21 @@ export const Style = css`
     --space: 3px;
     --half-height: 47px;
   }
+
+  @keyframes opacityAnimation {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
   .score-container,
   .teams-container {
     display: flex;
@@ -55,13 +70,6 @@ export const Style = css`
     flex-direction: column;
     justify-content: space-between;
     row-gap: var(--space);
-  }
-
-  .outs-dot {
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    display: inline-block;
   }
 
   .score-row {

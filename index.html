@@ -1,65 +1,93 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="">
 
   <script type="module" src="/src/main.ts"></script>
 </head>
-<body>
-<div style="display: flex; justify-content: center">
-  <baseball-scoreboard
-    awayLogoSrc="https://static.wbsc.org/upload/acfef0c2-5af4-e797-cb4b-550d6173bb34.png"
-    homeLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
-    leagueLogoSrc="https://static.wbsc.org/uploads/federations/8/events/photos/63ac8faa-4b82-1b32-a456-35b1892d8e58.svg"
-    leagueLogoShadow="#8a8a8a"
-    hideCounts="false"
-    hideBases="false"
-    hideInning="false"
-    fontName="Courier New"
-    fontLineHeight="1.10"
-    bases="false,true,true"
-    inning="1.5"
-    homeScore="10"
-    awayScore="3"
-    homeScore="0"
-    balls="2"
-    strikes="1"
-    outs="1"
-    combineBasesAndInning="true"
-    awayScore="0"
-    inning="1.0"
-    awayGradient="180,#474747,#334433,30,50"
-    homeGradient="180,#bb0909,#992222,30,50"
-    layoutGradient="180,#ebebeb,#e0e0e0,50,50"
-    backgroundGradient="180,#000000,#484848,0,100"
-    fontColorDark="#292929"
-    fontColorLight="#e8e8e8"
-    awayLogoShadow="#3b3b3b"
-    homeLogoShadow="#2a2a2a"
-    activeInningColor="#e00000"
-    inactiveInningColor="#b3b3b3"
-    activeOutColor="#e00000"
-    inactiveOutColor="#b3b3b3"
-    activeBaseColor="#e5c72b"
-    inactiveBaseColor="#b3b3b3"
-    awayName="BH"
-    homeName="HB"
-    fontLineHeight="1.15"
-    borderColor="#000000"
-    borderSize="3px"
-    outsStyle="dots"
-    inningStyle="combined"
-  ></baseball-scoreboard>
-</div>
 
-<footer style="text-align: center">
-  <p>
-    <a href="https://github.com/hardbulls/baseball-scoreboard">Hard Bulls Baseball Scoreboard</a> - <a
-    href="https://www.hardbulls.com">hardbulls.com</a>
-  </p>
-  <p>
-    Copyright &copy; Arjan Frans 2023
-  </p>
-</footer>
+<body>
+  <div style="display: flex; justify-content: center">
+    <baseball-scoreboard awayLogoSrc="https://static.wbsc.org/upload/acfef0c2-5af4-e797-cb4b-550d6173bb34.png"
+      homeLogoSrc="https://static.hardbulls.com/images/icons/icon-180x180.png"
+      leagueLogoSrc="https://static.wbsc.org/uploads/federations/8/events/photos/63ac8faa-4b82-1b32-a456-35b1892d8e58.svg"
+      leagueLogoShadow="#8a8a8a" hideCounts="false" hideBases="false" hideInning="false" fontName="Courier New"
+      fontLineHeight="1.10" bases="false,true,true" inning="1.5" homeScore="10" awayScore="3" homeScore="0" balls="2"
+      strikes="1" outs="1" combineBasesAndInning="true" awayScore="0" inning="1.0"
+      awayGradient="180,#474747,#334433,30,50" homeGradient="180,#bb0909,#992222,30,50"
+      layoutGradient="180,#ebebeb,#e0e0e0,50,50" backgroundGradient="180,#000000,#484848,0,100" fontColorDark="#292929"
+      fontColorLight="#e8e8e8" awayLogoShadow="#3b3b3b" homeLogoShadow="#2a2a2a" activeInningColor="#e00000"
+      inactiveInningColor="#b3b3b3" activeOutColor="#e00000" inactiveOutColor="#b3b3b3" activeBaseColor="#e5c72b"
+      inactiveBaseColor="#b3b3b3" awayName="BH" homeName="HB" fontLineHeight="1.15" borderColor="#000000"
+      borderSize="3px" outsStyle="dots" inningStyle="combined"></baseball-scoreboard>
+  </div>
+
+  <div style="display: flex; flex-direction: column; max-width: 400px;">
+    <div style="display: flex; justify-content: space-between">
+      <div>Outs</div>
+      <div>
+        <input onchange="changeProperty('outs', this.value)" type="number" min="0" max="2"  />
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between">
+      <div>Inning</div>
+      <div>
+        <input onchange="changeProperty('inning', this.value)" type="number" step="0.5" min="1" max="99.5" />
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between">
+      <div>Home Score</div>
+      <div>
+        <input onchange="changeProperty('homeScore', this.value)" type="number" min="0" max="99"/>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <div>Away Score</div>
+      <div>
+        <input onchange="changeProperty('awayScore', this.value)" type="number" min="0" max="99"/>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <div>Balls</div>
+      <div>
+        <input onchange="changeProperty('balls', this.value)" type="number" min="0" max="3" />
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <div>Strikes</div>
+      <div>
+        <input onchange="changeProperty('strikes', this.value)" type="number" min="0" max="2" />
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    const scoreboard = document.querySelector('baseball-scoreboard')
+    const outs = 0;
+
+    function changeProperty(property, value) {
+      scoreboard.setAttribute(property, value)
+    }
+
+
+  </script>
+
+
+
+  <footer style="text-align: center">
+    <p>
+      <a href="https://github.com/hardbulls/baseball-scoreboard">Hard Bulls Baseball Scoreboard</a> - <a
+        href="https://www.hardbulls.com">hardbulls.com</a>
+    </p>
+    <p>
+      Copyright &copy; Arjan Frans 2023
+    </p>
+  </footer>
 </body>
+
 </html>
