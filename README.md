@@ -13,7 +13,7 @@ See [index.html](./index.html) for example usage.
 
 https://hardbulls.github.io/baseball-scoreboard
 
-![Baseball Scoreboard Preview](./.github/preview.png)
+![Baseball Scoreboard Preview](./.github/preview.webp)
 
 ## Development
 
