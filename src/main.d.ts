@@ -1,5 +1,5 @@
-import { BaseballScoreboard } from "./baseball-scoreboard.ts";
-import { BaseballPlayerboard } from "./baseball-playerboard.ts";
+import { BaseballScoreboard } from "./baseball-scoreboard";
+import { BaseballPlayerboard } from "./baseball-playerboard";
 
 declare global {
   interface HTMLElementTagNameMap {

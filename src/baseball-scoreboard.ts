@@ -7,11 +7,9 @@ import { Counts } from "./Counts.ts";
 import { generateGradient } from "./generateGradient.ts";
 import { InningVertical } from "./InningVertical.ts";
 import { Score } from "./Score.ts";
-import { CountStyle } from "./CountStyle.ts";
 import { LeagueLogo } from "./Logo.ts";
 import { TeamLogos } from "./TeamLogos.ts";
 import { TeamNames } from "./TeamNames.ts";
-import { InningStyle } from "./InningStyle.ts";
 
 @customElement("baseball-scoreboard")
 export class BaseballScoreboard extends LitElement {
@@ -124,10 +122,10 @@ export class BaseballScoreboard extends LitElement {
   leagueLogoSrc: string | undefined = undefined;
 
   @property()
-  outsStyle = CountStyle.Dots;
+  outsStyle: "dots" | "text" = "dots";
 
-  @property({ type: InningStyle })
-  inningStyle = InningStyle.Combined;
+  @property()
+  inningStyle: "combined" | "separate" = "combined";
 
   @property()
   battingTeam: "home" | "away" = "home";
@@ -199,8 +197,7 @@ export class BaseballScoreboard extends LitElement {
             fontColorDark: this.fontColorDark,
             layoutGradient: layoutGradient,
           })}
-          ${!hideInning &&
-          (this.inningStyle === InningStyle.Separate || hideBases)
+          ${!hideInning && (this.inningStyle === "separate" || hideBases)
             ? InningVertical({
                 layoutGradient: layoutGradient,
                 activeInningColor: this.activeInningColor,
@@ -217,7 +214,7 @@ export class BaseballScoreboard extends LitElement {
                 fontColor: this.fontColorLight,
                 inning: this.inning,
                 activeInningColor: this.activeInningColor,
-                showInnings: this.inningStyle === InningStyle.Combined,
+                showInnings: this.inningStyle === "combined",
               })
             : ""}
           ${!hideCounts
