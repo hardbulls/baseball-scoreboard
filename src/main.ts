@@ -12,6 +12,7 @@ import { LeagueLogo } from "./Logo.ts";
 import { TeamLogos } from "./TeamLogos.ts";
 import { TeamNames } from "./TeamNames.ts";
 import { InningStyle } from "./InningStyle.ts";
+import { Players } from "./Players.ts";
 
 @customElement("baseball-scoreboard")
 export class BaseballScoreboard extends LitElement {
@@ -129,6 +130,16 @@ export class BaseballScoreboard extends LitElement {
   @property({ type: InningStyle })
   inningStyle = InningStyle.Combined;
 
+  @property()
+  battingTeam: 'home'|'away' = 'home'
+
+  @property()
+  pitcherName = 'Pitcher'
+
+
+  @property()
+  batterName = 'Batter'
+
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
 
@@ -154,7 +165,7 @@ export class BaseballScoreboard extends LitElement {
     return html`
             <div style="font-family: ${
               this.fontName
-            }, sans-serif; font-size: 32px; display: flex; line-height: ${
+            }, sans-serif; font-size: 32px; display: flex; flex-direction: column; line-height: ${
               this.fontLineHeight
             }">
                 <div style="
@@ -229,7 +240,18 @@ export class BaseballScoreboard extends LitElement {
                     : ""
                 }
                 </div>
-            </div
+                ${Players({
+                  borderSize: this.borderSize,
+                  borderColor: this.borderColor,
+                  backgroundGradient: backgroundGradient,
+                  fontColor: this.fontColorLight,
+                  awayGradient: awayGradient,
+                  battingTeam: this.battingTeam,
+                  homeGradient: homeGradient,
+                  batterName: this.batterName,
+                  pitcherName: this.pitcherName
+                })}
+            </div>
         `;
   }
 }
