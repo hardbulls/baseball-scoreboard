@@ -1,18 +1,11 @@
 import { html } from "lit";
-import { generateGradient } from "./generateGradient.ts";
-import { Gradient } from "./Gradient.ts";
 
 interface Props {
-  backgroundGradient: Gradient;
   leagueLogoSrc?: string;
   leagueLogoShadow: string;
 }
 
-export const LeagueLogo = ({
-  backgroundGradient,
-  leagueLogoSrc,
-  leagueLogoShadow,
-}: Props) => {
+export const LeagueLogo = ({ leagueLogoSrc, leagueLogoShadow }: Props) => {
   if (!leagueLogoSrc) {
     return;
   }
@@ -32,11 +25,7 @@ export const LeagueLogo = ({
 
   return html`
     <div class="league-logo-container">
-      <div
-        style="display: flex; background: ${generateGradient(
-          backgroundGradient,
-        )}"
-      >
+      <div style="display: flex">
         <div class="league-logo logo">${leagueLogo}</div>
       </div>
     </div>

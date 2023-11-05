@@ -1,11 +1,6 @@
 import { html } from "lit";
-import { generateGradient } from "./generateGradient.ts";
-import { Gradient } from "./Gradient.ts";
 
 interface Props {
-  awayGradient: Gradient;
-  homeGradient: Gradient;
-  layoutGradient: Gradient;
   awayLogoSrc?: string;
   homeLogoSrc?: string;
   awayLogoShadow: string;
@@ -17,8 +12,6 @@ export const TeamLogos = ({
   homeLogoShadow,
   awayLogoSrc,
   homeLogoSrc,
-  awayGradient,
-  homeGradient,
 }: Props) => {
   let awayLogo;
 
@@ -48,17 +41,11 @@ export const TeamLogos = ({
 
   return html`
     <div class="team-logos-container">
-      <div
-        style="background: ${generateGradient(awayGradient)}"
-        class="team-logo-row"
-      >
+      <div class="team-logo-row background-away">
         <div class="team-logo logo">${awayLogo}</div>
       </div>
 
-      <div
-        style="background: ${generateGradient(homeGradient)}"
-        class="team-logo-row"
-      >
+      <div class="team-logo-row background-home">
         <div class="team-logo logo">${homeLogo}</div>
       </div>
     </div>

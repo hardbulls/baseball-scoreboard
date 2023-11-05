@@ -1,22 +1,18 @@
 import { html } from "lit";
-import { Gradient } from "./Gradient.js";
-import { generateGradient } from "./generateGradient.js";
 import { ArrowDirection, InningArrow } from "./InningArrow.js";
 
 interface Props {
   inning: number;
-  fontColor: string;
+  fontClass: string;
   inactiveInningColor: string;
   activeInningColor: string;
-  layoutGradient: Gradient;
 }
 
 export const InningVertical = ({
   inning,
-  fontColor,
+  fontClass,
   inactiveInningColor,
   activeInningColor,
-  layoutGradient,
 }: Props) => {
   const isTop = inning % 1 === 0;
 
@@ -35,12 +31,7 @@ export const InningVertical = ({
       }
     </style>
 
-    <div
-      class="inning-vertical"
-      style="color: ${fontColor}; background: ${generateGradient(
-        layoutGradient,
-      )}"
-    >
+    <div class="inning-vertical background-light ${fontClass}">
       ${Math.floor(inning)}
       <div class="inning-indicator-top">
         ${InningArrow(

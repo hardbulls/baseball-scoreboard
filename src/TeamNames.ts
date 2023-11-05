@@ -1,38 +1,22 @@
 import { html } from "lit";
-import { generateGradient } from "./generateGradient.ts";
-import { Gradient } from "./Gradient.ts";
 
 interface Props {
-  awayGradient: Gradient;
-  homeGradient: Gradient;
-  fontColor: string;
+  fontClass: string;
   awayName: string;
   homeName: string;
 }
 
-export const TeamNames = ({
-  awayName,
-  homeName,
-  fontColor,
-  awayGradient,
-  homeGradient,
-}: Props) => {
+export const TeamNames = ({ awayName, homeName, fontClass }: Props) => {
   return html`
-    <div class="teams-container">
-      <div
-        style="display: flex; background: ${generateGradient(awayGradient)}"
-        class="score-row"
-      >
-        <div class="score-name" style="color: ${fontColor}">
+    <div class="teams-container ${fontClass}">
+      <div style="display: flex;" class="score-row">
+        <div class="score-name background-away">
           ${awayName && html`<span>${awayName}</span>`}
         </div>
       </div>
 
-      <div
-        style="display: flex; background: ${generateGradient(homeGradient)}"
-        class="score-row"
-      >
-        <div class="score-name" style="color: ${fontColor}">
+      <div style="display: flex;" class="score-row background-home">
+        <div class="score-name">
           ${homeName && html`<span>${homeName}</span>`}
         </div>
       </div>

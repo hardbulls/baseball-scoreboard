@@ -3,10 +3,14 @@ import { customElement, property } from "lit/decorators.js";
 import { Gradient } from "./Gradient.ts";
 import { Style } from "./style.ts";
 import { Players } from "./Players.ts";
+import { BaseballStyle } from "./baseball-style.ts";
 
 @customElement("baseball-playerboard")
 export class BaseballPlayerboard extends LitElement {
   static styles = [Style];
+
+  @property()
+  mode: "foreground" | "background" | "normal" = "normal";
 
   @property({ type: Number })
   inning = 1.0;
@@ -81,6 +85,19 @@ export class BaseballPlayerboard extends LitElement {
     const hideStats = this.hideStats === "true";
 
     return html`
+      <style>
+        ${BaseballStyle(
+          this.mode === "foreground",
+          this.mode === "background",
+          this.fontColorDark,
+          this.fontColorLight,
+          awayGradient,
+          homeGradient,
+          layoutGradient,
+          backgroundGradient,
+        )})
+      </style>
+
       <div
         style="font-family: ${this
           .fontName}, sans-serif; font-size: 32px; display: flex; justify-content: center; max-width: max-content; flex-direction: column; line-height: ${this
@@ -94,8 +111,6 @@ export class BaseballPlayerboard extends LitElement {
             hideStats: hideStats,
             backgroundGradient: backgroundGradient,
             layoutGradient: layoutGradient,
-            fontColorLight: this.fontColorLight,
-            fontColorDark: this.fontColorDark,
             awayGradient: awayGradient,
             battingTeam: battingTeam,
             homeGradient: homeGradient,

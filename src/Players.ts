@@ -1,5 +1,4 @@
 import { html } from "lit";
-import { generateGradient } from "./generateGradient.ts";
 import { Gradient } from "./Gradient.ts";
 
 interface Props {
@@ -8,8 +7,6 @@ interface Props {
   awayGradient: Gradient;
   backgroundGradient: Gradient;
   layoutGradient: Gradient;
-  fontColorLight: string;
-  fontColorDark: string;
   battingTeam: "home" | "away";
   homeGradient: Gradient;
   batterAvg: number;
@@ -21,39 +18,22 @@ export const Players = ({
   batterName,
   pitcherName,
   battingTeam,
-  fontColorLight,
-  fontColorDark,
-  layoutGradient,
-  homeGradient,
   hideStats,
   batterAvg,
   pitcherEra,
-  backgroundGradient,
-  awayGradient,
 }: Props) => {
   return html`
     <style>
-      .home-background {
-        background: ${generateGradient(homeGradient)};
-      }
-
-      .away-background {
-        background: ${generateGradient(awayGradient)};
-      }
-
       .container {
         font-size: 0.8em;
         width: max-content;
         display: flex;
         flex-direction: column;
         row-gap: var(--space);
-        background: ${generateGradient(backgroundGradient)};
         height: max-content;
       }
 
       .type-row {
-        color: ${fontColorDark};
-        background: ${generateGradient(layoutGradient)};
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -69,7 +49,6 @@ export const Players = ({
       }
 
       .name-row {
-        color: ${fontColorLight};
         padding-inline: 6px;
         padding-block: 3px;
 
@@ -79,9 +58,7 @@ export const Players = ({
       }
 
       .stats-row {
-        background: ${generateGradient(layoutGradient)};
         margin-left: var(--space);
-        color: ${fontColorDark};
         padding-inline: 6px;
         padding-block: 3px;
         display: ${hideStats ? "none" : "flex"};
@@ -106,19 +83,19 @@ export const Players = ({
         justify-content: center;
       }
     </style>
-    <div class="container">
+    <div class="container background-dark">
       <div
         class="row  ${battingTeam === "away"
-          ? "away-background"
-          : "home-background"}"
+          ? "background-away"
+          : "background-home"}"
         style="display: flex; justify-content: space-between; "
       >
         <div class="type-name-container">
-          <div class="type-row">P</div>
-          <div class="name-row">${pitcherName}</div>
+          <div class="type-row font-color-dark background-light">P</div>
+          <div class="name-row font-color-light">${pitcherName}</div>
         </div>
 
-        <div class="stats-row">
+        <div class="stats-row font-color-dark background-light">
           <div class="stats-row-key">ERA</div>
 
           <div class="stats-row-value">${pitcherEra.toFixed(1)}</div>
@@ -126,16 +103,16 @@ export const Players = ({
       </div>
       <div
         class="row  ${battingTeam === "home"
-          ? "away-background"
-          : "home-background"}"
+          ? "background-away"
+          : "background-home"}"
         style="display: flex; justify-content: space-between;"
       >
         <div class="type-name-container">
-          <div class="type-row">B</div>
-          <div class="name-row">${batterName}</div>
+          <div class="type-row font-color-dark background-light">B</div>
+          <div class="name-row font-color-light">${batterName}</div>
         </div>
 
-        <div class="stats-row">
+        <div class="stats-row font-color-dark background-light">
           <div class="stats-row-key">AVG</div>
 
           <div class="stats-row-value">${batterAvg.toFixed(3)}</div>

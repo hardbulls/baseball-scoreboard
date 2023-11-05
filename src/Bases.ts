@@ -7,14 +7,14 @@ interface Props {
   bases: Array<boolean>;
   showInnings: boolean;
   inning: number;
-  fontColor: string;
+  fontClass: string;
   activeInningColor: string;
 }
 
 export const Bases = ({
   activeBaseColor,
   activeInningColor,
-  fontColor,
+  fontClass,
   inning,
   inactiveBaseColor,
   bases,
@@ -36,7 +36,6 @@ export const Bases = ({
       <div class="inning-row">
         ${InningHorizontal({
           inning,
-          fontColor,
           activeInningColor,
         })}
       </div>
@@ -56,12 +55,6 @@ export const Bases = ({
         width: ${width};
         perspective: 190px;
         height: var(--half-height);
-      }
-
-      .bases-component {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
       }
 
       .base-3d-wrapper {
@@ -97,7 +90,7 @@ export const Bases = ({
       }
     </style>
 
-    <div class="bases-component">
+    <div class="bases-component ${fontClass}">
       <div class="base-container" style="${basesStyle}">
         <div class="base-3d-wrapper">
           <div class="base-rotate-wrapper">

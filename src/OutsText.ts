@@ -1,19 +1,12 @@
-import { generateGradient } from "./generateGradient.ts";
-import { Gradient } from "./Gradient.ts";
 import { html } from "lit";
 
 interface Props {
   outs: number;
-  layoutGradient: Gradient;
 }
 
-export const OutsText = ({ outs, layoutGradient }: Props) => {
-  const style = `color: state.displaySettings.fontColorDark; background: ${generateGradient(
-    layoutGradient,
-  )}`;
-
+export const OutsText = ({ outs }: Props) => {
   return html`
-    <div class="counts-bottom" style=${style}>
+    <div class="counts-bottom background-light">
       <span class="outs-count">${outs}</span>
       <span class="outs-text">out</span>
     </div>

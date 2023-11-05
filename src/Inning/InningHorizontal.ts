@@ -3,21 +3,15 @@ import { ArrowDirection, InningArrow } from "../InningArrow.ts";
 
 interface Props {
   inning: number;
-  fontColor: string;
   activeInningColor: string;
 }
 
-export const InningHorizontal = ({
-  inning,
-  fontColor,
-  activeInningColor,
-}: Props) => {
+export const InningHorizontal = ({ inning, activeInningColor }: Props) => {
   const isTop = inning % 1 === 0;
 
   return html`
     <style>
       .inning-horizontal {
-        color: ${fontColor};
         display: flex;
         flex-direction: row;
         column-gap: 6px;

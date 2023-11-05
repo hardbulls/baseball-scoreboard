@@ -40,10 +40,6 @@ export const Style = css`
     justify-content: space-between;
   }
 
-  .league-logo {
-    height: calc(var(--half-height) * 2);
-  }
-
   .league-logo img {
     max-height: calc(var(--half-height) * 2);
   }
@@ -52,12 +48,6 @@ export const Style = css`
     height: var(--half-height);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
-
-  .team-logo {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
   }
 
@@ -77,6 +67,7 @@ export const Style = css`
   }
 
   .score-name {
+    width: 100%;
     filter: drop-shadow(2px 2px 2px black);
     display: flex;
     flex-direction: column;

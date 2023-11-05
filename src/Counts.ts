@@ -1,5 +1,3 @@
-import { generateGradient } from "./generateGradient.ts";
-import { Gradient } from "./Gradient.ts";
 import { html } from "lit";
 import { OutsText } from "./OutsText.ts";
 import { OutsDots } from "./OutsDots.ts";
@@ -8,9 +6,8 @@ type Props = {
   balls: number;
   strikes: number;
   outs: number;
-  layoutGradient: Gradient;
   outsStyle: string;
-  fontColorDark: string;
+  fontClass: string;
   activeOutColor: string;
   inactiveOutColor: string;
 };
@@ -18,26 +15,21 @@ export const Counts = ({
   balls,
   strikes,
   outs,
-  layoutGradient,
   outsStyle,
-  fontColorDark,
+  fontClass,
   activeOutColor,
   inactiveOutColor,
 }: Props) => {
-  const style = `color: ${fontColorDark}; background: ${generateGradient(
-    layoutGradient,
-  )}`;
-
   return html`
-    <div class="counts-container">
-      <div class="counts-top" style=${style}>
+    <div class="counts-container ${fontClass}">
+      <div class="counts-top background-light">
         <span>${balls}</span>
         <span class="count-separator">-</span>
         <span>${strikes}</span>
       </div>
       ${outsStyle === "text"
-        ? OutsText({ outs, layoutGradient })
-        : OutsDots({ outs, layoutGradient, activeOutColor, inactiveOutColor })}
+        ? OutsText({ outs })
+        : OutsDots({ outs, activeOutColor, inactiveOutColor })}
     </div>
   `;
 };
