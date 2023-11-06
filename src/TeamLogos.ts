@@ -3,26 +3,14 @@ import { html } from "lit";
 interface Props {
   awayLogoSrc?: string;
   homeLogoSrc?: string;
-  awayLogoShadow: string;
-  homeLogoShadow: string;
 }
 
-export const TeamLogos = ({
-  awayLogoShadow,
-  homeLogoShadow,
-  awayLogoSrc,
-  homeLogoSrc,
-}: Props) => {
+export const TeamLogos = ({ awayLogoSrc, homeLogoSrc }: Props) => {
   let awayLogo;
 
   if (awayLogoSrc) {
     awayLogo = html`
-      <img
-        src=${awayLogoSrc}
-        alt=""
-        height="100%"
-        style="filter: drop-shadow(2px 2px 0px ${awayLogoShadow}88) drop-shadow(0px 0px 3px ${awayLogoShadow})"
-      />
+      <img src=${awayLogoSrc} alt="" class="shadow-away" height="100%" />
     `;
   }
 
@@ -30,12 +18,7 @@ export const TeamLogos = ({
 
   if (homeLogoSrc) {
     homeLogo = html`
-      <img
-        src=${homeLogoSrc}
-        alt=""
-        height="100%"
-        style="filter: drop-shadow(2px 2px 0px ${homeLogoShadow}88) drop-shadow(0px 0px 3px ${homeLogoShadow})"
-      />
+      <img src=${homeLogoSrc} class="shadow-home" alt="" height="100%" />
     `;
   }
 

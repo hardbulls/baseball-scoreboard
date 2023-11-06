@@ -8,8 +8,6 @@ type Props = {
   outs: number;
   outsStyle: string;
   fontClass: string;
-  activeOutColor: string;
-  inactiveOutColor: string;
 };
 export const Counts = ({
   balls,
@@ -17,8 +15,6 @@ export const Counts = ({
   outs,
   outsStyle,
   fontClass,
-  activeOutColor,
-  inactiveOutColor,
 }: Props) => {
   return html`
     <div class="counts-container ${fontClass}">
@@ -27,9 +23,7 @@ export const Counts = ({
         <span class="count-separator">-</span>
         <span>${strikes}</span>
       </div>
-      ${outsStyle === "text"
-        ? OutsText({ outs })
-        : OutsDots({ outs, activeOutColor, inactiveOutColor })}
+      ${outsStyle === "text" ? OutsText({ outs }) : OutsDots({ outs })}
     </div>
   `;
 };

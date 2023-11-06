@@ -1,14 +1,9 @@
 import { html } from "lit";
-import { Gradient } from "./Gradient.ts";
 
 interface Props {
   batterName: string;
   pitcherName: string;
-  awayGradient: Gradient;
-  backgroundGradient: Gradient;
-  layoutGradient: Gradient;
   battingTeam: "home" | "away";
-  homeGradient: Gradient;
   batterAvg: number;
   pitcherEra: number;
   hideStats: boolean;

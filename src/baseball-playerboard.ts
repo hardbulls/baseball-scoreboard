@@ -1,9 +1,10 @@
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { Gradient } from "./Gradient.ts";
 import { Style } from "./style.ts";
 import { Players } from "./Players.ts";
 import { BaseballStyle } from "./baseball-style.ts";
+import { DisplayConfig } from "./Attributes/DisplayConfig.ts";
+import { DefaultDisplayConfig } from "./DefaultDisplayConfig.ts";
 
 @customElement("baseball-playerboard")
 export class BaseballPlayerboard extends LitElement {
@@ -15,23 +16,8 @@ export class BaseballPlayerboard extends LitElement {
   @property({ type: Number })
   inning = 1.0;
 
-  @property()
-  awayGradient = "180,#1653af,#063376,30,50";
-
-  @property()
-  homeGradient = "180,#ff2222,#ea1010,30,50";
-
-  @property()
-  layoutGradient = "180,#ebebeb,#e0e0e0,50,50";
-
-  @property()
-  backgroundGradient = "180,#000000,#484848,0,100";
-
-  @property()
-  fontColorDark = "#292929";
-
-  @property()
-  fontColorLight = "#e8e8e8";
+  @property({ type: Object })
+  display: DisplayConfig = DefaultDisplayConfig;
 
   @property()
   fontName = "Open Sans";
@@ -63,39 +49,15 @@ export class BaseballPlayerboard extends LitElement {
   @property()
   hideStats = "false";
 
-  private parseGradient(value: string): Gradient {
-    const awayGradientValues = value.split(",");
-
-    return {
-      angle: Number.parseInt(awayGradientValues[0]),
-      startColor: awayGradientValues[1],
-      endColor: awayGradientValues[2],
-      startPercentage: Number.parseInt(awayGradientValues[3]),
-      endPercentage: Number.parseInt(awayGradientValues[4]),
-    };
-  }
-
   render() {
-    const awayGradient = this.parseGradient(this.awayGradient);
-    const homeGradient = this.parseGradient(this.homeGradient);
-    const layoutGradient = this.parseGradient(this.layoutGradient);
-    const backgroundGradient = this.parseGradient(this.backgroundGradient);
     const battingTeam = this.inning % 1 === 0 ? "away" : "home";
 
     const hideStats = this.hideStats === "true";
+    const displayConfig = this.display as DisplayConfig;
 
     return html`
       <style>
-        ${BaseballStyle(
-          this.mode === "foreground",
-          this.mode === "background",
-          this.fontColorDark,
-          this.fontColorLight,
-          awayGradient,
-          homeGradient,
-          layoutGradient,
-          backgroundGradient,
-        )})
+        ${BaseballStyle(this.mode === "foreground", displayConfig)})
       </style>
 
       <div
@@ -109,11 +71,7 @@ export class BaseballPlayerboard extends LitElement {
         >
           ${Players({
             hideStats: hideStats,
-            backgroundGradient: backgroundGradient,
-            layoutGradient: layoutGradient,
-            awayGradient: awayGradient,
             battingTeam: battingTeam,
-            homeGradient: homeGradient,
             batterName: this.batterName,
             pitcherName: this.pitcherName,
             batterAvg: this.batterAvg,

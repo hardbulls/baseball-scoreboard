@@ -4,16 +4,9 @@ import { ArrowDirection, InningArrow } from "./InningArrow.js";
 interface Props {
   inning: number;
   fontClass: string;
-  inactiveInningColor: string;
-  activeInningColor: string;
 }
 
-export const InningVertical = ({
-  inning,
-  fontClass,
-  inactiveInningColor,
-  activeInningColor,
-}: Props) => {
+export const InningVertical = ({ inning, fontClass }: Props) => {
   const isTop = inning % 1 === 0;
 
   return html`
@@ -34,20 +27,10 @@ export const InningVertical = ({
     <div class="inning-vertical background-light ${fontClass}">
       ${Math.floor(inning)}
       <div class="inning-indicator-top">
-        ${InningArrow(
-          ArrowDirection.UP,
-          isTop,
-          activeInningColor,
-          inactiveInningColor,
-        )}
+        ${InningArrow(ArrowDirection.UP, isTop)}
       </div>
       <div class="inning-indicator-bottom">
-        ${InningArrow(
-          ArrowDirection.DOWN,
-          !isTop,
-          activeInningColor,
-          inactiveInningColor,
-        )}
+        ${InningArrow(ArrowDirection.DOWN, !isTop)}
       </div>
     </div>
   `;

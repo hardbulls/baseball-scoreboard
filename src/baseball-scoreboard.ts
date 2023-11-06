@@ -1,22 +1,24 @@
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { Gradient } from "./Gradient.ts";
 import { Bases } from "./Bases.ts";
 import { Style } from "./style.ts";
 import { Counts } from "./Counts.ts";
 import { InningVertical } from "./InningVertical.ts";
 import { Score } from "./Score.ts";
-import { LeagueLogo } from "./Logo.ts";
+import { LeagueLogo } from "./LeagueLogo.ts";
 import { TeamLogos } from "./TeamLogos.ts";
 import { TeamNames } from "./TeamNames.ts";
 import { BaseballStyle } from "./baseball-style.ts";
+import { DisplayConfig } from "./Attributes/DisplayConfig.ts";
+import { BaseballScoreboardStyle } from "./baseball-scoreboard-style.ts";
+import { DefaultDisplayConfig } from "./DefaultDisplayConfig.ts";
 
 @customElement("baseball-scoreboard")
 export class BaseballScoreboard extends LitElement {
   static styles = [Style];
 
   @property()
-  mode: "foreground" | "background" | "normal" = "normal";
+  mode: "foreground" | "normal" = "normal";
 
   @property()
   hideBases = "false";
@@ -48,56 +50,14 @@ export class BaseballScoreboard extends LitElement {
   @property()
   bases = `false,false,false`;
 
-  @property()
-  awayGradient = "180,#1653af,#063376,30,50";
-
-  @property()
-  homeGradient = "180,#ff2222,#ea1010,30,50";
-
-  @property()
-  layoutGradient = "180,#ebebeb,#e0e0e0,50,50";
-
-  @property()
-  backgroundGradient = "180,#000000,#484848,0,100";
-
-  @property()
-  fontColorDark = "#292929";
-
-  @property()
-  fontColorLight = "#e8e8e8";
+  @property({ type: Object })
+  display: DisplayConfig = DefaultDisplayConfig;
 
   @property()
   awayLogoSrc: string | undefined = undefined;
 
   @property()
   homeLogoSrc: string | undefined = undefined;
-
-  @property()
-  awayLogoShadow = "#575757";
-
-  @property()
-  homeLogoShadow = "#000000";
-
-  @property()
-  leagueLogoShadow = "#000000";
-
-  @property()
-  activeInningColor = "#e00000";
-
-  @property()
-  inactiveInningColor = "#b3b3b3";
-
-  @property()
-  activeOutColor = "#e00000";
-
-  @property()
-  inactiveOutColor = "#b3b3b3";
-
-  @property()
-  activeBaseColor = "#e00000";
-
-  @property()
-  inactiveBaseColor = "#b3b3b3";
 
   @property()
   awayName = "Away";
@@ -139,80 +99,30 @@ export class BaseballScoreboard extends LitElement {
   @property()
   batterName = "Batter";
 
-  private parseGradient(value: string): Gradient {
-    const awayGradientValues = value.split(",");
-
-    return {
-      angle: Number.parseInt(awayGradientValues[0]),
-      startColor: awayGradientValues[1],
-      endColor: awayGradientValues[2],
-      startPercentage: Number.parseInt(awayGradientValues[3]),
-      endPercentage: Number.parseInt(awayGradientValues[4]),
-    };
-  }
-
   render() {
-    const awayGradient = this.parseGradient(this.awayGradient);
-    const homeGradient = this.parseGradient(this.homeGradient);
-    const layoutGradient = this.parseGradient(this.layoutGradient);
-    const backgroundGradient = this.parseGradient(this.backgroundGradient);
     const bases = this.bases.split(",").map((v) => v === "true");
     const hideBases = this.hideBases === "true";
     const hideInning = this.hideInning === "true";
     const hideCounts = this.hideCounts === "true";
+    const displayConfig = this.display as DisplayConfig;
 
     return html`
       <style>
-        ${BaseballStyle(
-            this.mode === "foreground",
-            this.mode === "background",
-            this.fontColorDark,
-            this.fontColorLight,
-            awayGradient,
-            homeGradient,
-            layoutGradient,
-            backgroundGradient,
-          )}
-          .team-logo {
+        ${BaseballStyle(this.mode === "foreground", displayConfig)} .team-logo {
           display: flex;
           flex-direction: row;
           justify-content: center;
-          opacity: ${this.mode === "background" ? "0" : "1"};
         }
 
-        .league-logo {
+        ${BaseballScoreboardStyle(this.mode === "foreground", displayConfig)}
+          .league-logo {
           height: calc(var(--half-height) * 2);
-          opacity: ${this.mode === "background" ? "0" : "1"};
-        }
-
-        .outs-dot {
-          height: 25px;
-          width: 25px;
-          border-radius: 50%;
-          display: ${this.mode === "background" ? "none" : "inline-block"};
         }
 
         .bases-component {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          opacity: ${this.mode === "background" ? "0" : "1"};
-        }
-
-        .out-dot-on::after {
-          content: "";
-          height: 25px;
-          width: 25px;
-          border-radius: 50%;
-          display: ${this.mode === "background" ? "none" : "inline-block"};
-
-          margin-left: -1px;
-          margin-top: -1px;
-
-          filter: blur(3px);
-          border: 1px solid ${this.activeOutColor};
-          animation: opacityAnimation 0.9s 1;
-          opacity: 0;
         }
 
         .inning-indicator-arrow {
@@ -220,7 +130,6 @@ export class BaseballScoreboard extends LitElement {
           height: 0;
           border-left: 13px solid transparent;
           border-right: 13px solid transparent;
-          display: ${this.mode === "background" ? "none" : "inline-block"};
         }
       </style>
 
@@ -236,13 +145,10 @@ export class BaseballScoreboard extends LitElement {
         >
           ${LeagueLogo({
             leagueLogoSrc: this.leagueLogoSrc,
-            leagueLogoShadow: this.leagueLogoShadow,
           })}
           ${TeamLogos({
             awayLogoSrc: this.awayLogoSrc,
             homeLogoSrc: this.homeLogoSrc,
-            awayLogoShadow: this.awayLogoShadow,
-            homeLogoShadow: this.homeLogoShadow,
           })}
           ${TeamNames({
             fontClass: "font-color-light",
@@ -256,19 +162,16 @@ export class BaseballScoreboard extends LitElement {
           })}
           ${!hideInning && (this.inningStyle === "separate" || hideBases)
             ? InningVertical({
-                activeInningColor: this.activeInningColor,
-                inactiveInningColor: this.inactiveInningColor,
                 fontClass: "font-color-dark",
                 inning: this.inning,
               })
             : ""}
           ${!hideBases
             ? Bases({
-                activeBaseColor: this.activeBaseColor,
-                inactiveBaseColor: this.inactiveBaseColor,
+                activeBaseColor: displayConfig.activeBaseColor,
+                inactiveBaseColor: displayConfig.inactiveBaseColor,
                 bases: bases,
                 inning: this.inning,
-                activeInningColor: this.activeInningColor,
                 showInnings: this.inningStyle === "combined",
                 fontClass: "font-color-light",
               })
@@ -278,8 +181,6 @@ export class BaseballScoreboard extends LitElement {
                 balls: this.balls,
                 strikes: this.strikes,
                 outs: this.outs,
-                activeOutColor: this.activeOutColor,
-                inactiveOutColor: this.inactiveOutColor,
                 fontClass: "font-color-dark",
                 outsStyle: this.outsStyle,
               })

@@ -8,12 +8,10 @@ interface Props {
   showInnings: boolean;
   inning: number;
   fontClass: string;
-  activeInningColor: string;
 }
 
 export const Bases = ({
   activeBaseColor,
-  activeInningColor,
   fontClass,
   inning,
   inactiveBaseColor,
@@ -36,7 +34,6 @@ export const Bases = ({
       <div class="inning-row">
         ${InningHorizontal({
           inning,
-          activeInningColor,
         })}
       </div>
     `;

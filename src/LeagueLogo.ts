@@ -2,10 +2,9 @@ import { html } from "lit";
 
 interface Props {
   leagueLogoSrc?: string;
-  leagueLogoShadow: string;
 }
 
-export const LeagueLogo = ({ leagueLogoSrc, leagueLogoShadow }: Props) => {
+export const LeagueLogo = ({ leagueLogoSrc }: Props) => {
   if (!leagueLogoSrc) {
     return;
   }
@@ -17,8 +16,8 @@ export const LeagueLogo = ({ leagueLogoSrc, leagueLogoShadow }: Props) => {
       <img
         src="${leagueLogoSrc}"
         alt=""
+        class="league-logo-shadow"
         height="100%"
-        style="filter: drop-shadow(2px 2px 10px ${leagueLogoShadow}66) drop-shadow(0px 0px 13px ${leagueLogoShadow}22)"
       />
     `;
   }

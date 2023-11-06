@@ -66,19 +66,6 @@ export const Style = css`
     height: var(--half-height);
   }
 
-  .score-name {
-    width: 100%;
-    filter: drop-shadow(2px 2px 2px black);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .score-name > span {
-    padding-right: 6px;
-    font-size: 1.3em;
-  }
-
   .score-value {
     display: flex;
     flex-direction: column;

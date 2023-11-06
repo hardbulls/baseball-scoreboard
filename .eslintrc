@@ -11,6 +11,12 @@
     "root": true,
     "rules": {
       "prettier/prettier": "error",
+      "max-len": [
+        "warn",
+        {
+          "code": 140
+        }
+      ],
       "@typescript-eslint/ban-ts-comment": [
         "error",
         {

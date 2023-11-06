@@ -5,20 +5,14 @@ export enum ArrowDirection {
   DOWN,
 }
 
-export const InningArrow = (
-  direction: ArrowDirection,
-  isCurrent: boolean,
-  activeColor: string,
-  inactiveColor: string,
-) => {
-  const color = isCurrent ? activeColor : inactiveColor;
-  let style = `filter: drop-shadow(0px 0px 1px color-mix(in srgb, ${color} 50%, black));`;
+export const InningArrow = (direction: ArrowDirection, isCurrent: boolean) => {
+  let classes = isCurrent ? "active-inning" : "inactive-inning";
 
   if (direction === ArrowDirection.UP) {
-    style += ` border-bottom: 22px solid ${color};`;
+    classes += isCurrent ? " active-inning-top" : " inactive-inning-top";
   } else {
-    style += ` border-top: 22px solid ${color};`;
+    classes += isCurrent ? " active-inning-bottom" : " inactive-inning-bottom";
   }
 
-  return html` <div class="inning-indicator-arrow" style=${style}></div> `;
+  return html` <div class="inning-indicator-arrow ${classes}"></div> `;
 };
