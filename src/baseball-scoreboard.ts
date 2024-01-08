@@ -6,7 +6,7 @@ import { Style } from "./style.ts";
 import { Counts } from "./Counts.ts";
 import { InningVertical } from "./InningVertical.ts";
 import { Score } from "./Score.ts";
-import { LeagueLogo } from "./Logo.ts";
+import { LeagueLogo } from "./LeagueLogo.ts";
 import { TeamLogos } from "./TeamLogos.ts";
 import { TeamNames } from "./TeamNames.ts";
 import { BaseballStyle } from "./baseball-style.ts";

@@ -9,8 +9,8 @@ interface Props {
 export const TeamNames = ({ awayName, homeName, fontClass }: Props) => {
   return html`
     <div class="teams-container ${fontClass}">
-      <div style="display: flex;" class="score-row">
-        <div class="score-name background-away">
+      <div style="display: flex;" class="score-row background-away">
+        <div class="score-name">
           ${awayName && html`<span>${awayName}</span>`}
         </div>
       </div>
