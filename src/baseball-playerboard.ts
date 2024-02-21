@@ -63,6 +63,9 @@ export class BaseballPlayerboard extends LitElement {
   @property()
   hideStats = "false";
 
+  @property({ type: Number })
+  minNameWidth = 18;
+
   private parseGradient(value: string): Gradient {
     const awayGradientValues = value.split(",");
 
@@ -118,6 +121,7 @@ export class BaseballPlayerboard extends LitElement {
             pitcherName: this.pitcherName,
             batterAvg: this.batterAvg,
             pitcherEra: this.pitcherEra,
+            minNameWidth: this.minNameWidth,
           })}
         </div>
       </div>

@@ -12,6 +12,7 @@ interface Props {
   batterAvg: number;
   pitcherEra: number;
   hideStats: boolean;
+  minNameWidth: number;
 }
 
 export const Players = ({
@@ -21,6 +22,7 @@ export const Players = ({
   hideStats,
   batterAvg,
   pitcherEra,
+  minNameWidth,
 }: Props) => {
   return html`
     <style>
@@ -46,6 +48,7 @@ export const Players = ({
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        min-width: ${minNameWidth}ch;
       }
 
       .name-row {
