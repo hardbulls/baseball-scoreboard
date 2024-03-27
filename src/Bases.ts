@@ -74,6 +74,21 @@ export const Bases = ({
         box-shadow: inset 0 0 3px black;
       }
 
+      .base-on::after {
+        content: "";
+        height: 32px;
+        width: 32px;
+        display: inline-block;
+
+        margin-left: -1px;
+        margin-top: -1px;
+
+        filter: blur(3px);
+        border: 1px solid ${activeBaseColor};
+        animation: opacityAnimation 0.9s 1;
+        opacity: 0;
+      }
+
       #second-base {
         left: 0;
         top: 0;
@@ -97,17 +112,17 @@ export const Bases = ({
             <div
               id="first-base"
               style="${bases[0] ? activeBaseStyle : inactiveBaseStyle}"
-              class="base"
+              class="base ${bases[0] ? "base-on" : ""}"
             ></div>
             <div
               id="second-base"
               style="${bases[1] ? activeBaseStyle : inactiveBaseStyle}"
-              class="base"
+              class="base ${bases[1] ? "base-on" : ""}"
             ></div>
             <div
               id="third-base"
               style="${bases[2] ? activeBaseStyle : inactiveBaseStyle}"
-              class="base"
+              class="base ${bases[2] ? "base-on" : ""}"
             ></div>
           </div>
         </div>
