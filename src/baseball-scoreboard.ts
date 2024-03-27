@@ -16,9 +16,6 @@ export class BaseballScoreboard extends LitElement {
   static styles = [Style];
 
   @property()
-  mode: "foreground" | "background" | "normal" = "normal";
-
-  @property()
   hideBases = "false";
 
   @property()
@@ -164,8 +161,6 @@ export class BaseballScoreboard extends LitElement {
     return html`
       <style>
         ${BaseballStyle(
-            this.mode === "foreground",
-            this.mode === "background",
             this.fontColorDark,
             this.fontColorLight,
             awayGradient,
@@ -177,26 +172,26 @@ export class BaseballScoreboard extends LitElement {
           display: flex;
           flex-direction: row;
           justify-content: center;
-          opacity: ${this.mode === "background" ? "0" : "1"};
+          opacity: 1;
         }
 
         .league-logo {
           height: calc(var(--half-height) * 2);
-          opacity: ${this.mode === "background" ? "0" : "1"};
+          opacity: 1;
         }
 
         .outs-dot {
           height: 25px;
           width: 25px;
           border-radius: 50%;
-          display: ${this.mode === "background" ? "none" : "inline-block"};
+          display: inline-block;
         }
 
         .bases-component {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          opacity: ${this.mode === "background" ? "0" : "1"};
+          opacity: 1;
         }
 
         .out-dot-on::after {
@@ -204,7 +199,7 @@ export class BaseballScoreboard extends LitElement {
           height: 25px;
           width: 25px;
           border-radius: 50%;
-          display: ${this.mode === "background" ? "none" : "inline-block"};
+          display: inline-block;
 
           margin-left: -1px;
           margin-top: -1px;
@@ -220,7 +215,7 @@ export class BaseballScoreboard extends LitElement {
           height: 0;
           border-left: 13px solid transparent;
           border-right: 13px solid transparent;
-          display: ${this.mode === "background" ? "none" : "inline-block"};
+          display: inline-block;
         }
       </style>
 

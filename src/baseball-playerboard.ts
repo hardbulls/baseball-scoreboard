@@ -9,9 +9,6 @@ import { BaseballStyle } from "./baseball-style.ts";
 export class BaseballPlayerboard extends LitElement {
   static styles = [Style];
 
-  @property()
-  mode: "foreground" | "background" | "normal" = "normal";
-
   @property({ type: Number })
   inning = 1.0;
 
@@ -90,8 +87,6 @@ export class BaseballPlayerboard extends LitElement {
     return html`
       <style>
         ${BaseballStyle(
-          this.mode === "foreground",
-          this.mode === "background",
           this.fontColorDark,
           this.fontColorLight,
           awayGradient,

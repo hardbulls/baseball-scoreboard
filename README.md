@@ -10,7 +10,6 @@ Great for usage in a live ticker web application or live streams.
 * Configurable colors, shadows and logos for each team
 * Configurable colors for inning, outs and base indicators
 * Optionally add a brand logo to the scoreboard
-* Transparent mode
 
 ## Usage
 

@@ -3,8 +3,8 @@ import { html } from "lit";
 interface Props {
   awayLogoSrc?: string;
   homeLogoSrc?: string;
-  awayLogoShadow: string;
-  homeLogoShadow: string;
+  awayLogoShadow?: string;
+  homeLogoShadow?: string;
 }
 
 export const TeamLogos = ({
@@ -14,28 +14,27 @@ export const TeamLogos = ({
   homeLogoSrc,
 }: Props) => {
   let awayLogo;
+  let awayStyle = "";
+  let homeLogo;
+  let homeStyle = "";
+
+  if (awayLogoShadow) {
+    awayStyle = `filter: drop-shadow(2px 2px 0px ${awayLogoShadow}88) drop-shadow(0px 0px 3px ${awayLogoShadow})`;
+  }
 
   if (awayLogoSrc) {
     awayLogo = html`
-      <img
-        src=${awayLogoSrc}
-        alt=""
-        height="100%"
-        style="filter: drop-shadow(2px 2px 0px ${awayLogoShadow}88) drop-shadow(0px 0px 3px ${awayLogoShadow})"
-      />
+      <img src=${awayLogoSrc} alt="" height="100%" style="${awayStyle}" />
     `;
   }
 
-  let homeLogo;
+  if (homeLogoShadow) {
+    homeStyle = `filter: drop-shadow(2px 2px 0px ${homeLogoShadow}88) drop-shadow(0px 0px 3px ${homeLogoShadow})`;
+  }
 
   if (homeLogoSrc) {
     homeLogo = html`
-      <img
-        src=${homeLogoSrc}
-        alt=""
-        height="100%"
-        style="filter: drop-shadow(2px 2px 0px ${homeLogoShadow}88) drop-shadow(0px 0px 3px ${homeLogoShadow})"
-      />
+      <img src=${homeLogoSrc} alt="" height="100%" style="${homeStyle}" />
     `;
   }
 
