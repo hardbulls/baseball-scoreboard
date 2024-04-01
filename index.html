@@ -64,6 +64,8 @@
   >
   </baseball-playerboard>
 
+  <baseball-field />
+
 </div>
 
 <div style="display: flex; flex-direction: column; max-width: 400px; row-gap: 4px;">
@@ -163,29 +165,82 @@
 </div>
 
 <script>
-  const scoreboards = document.querySelectorAll("baseball-scoreboard");
-  const playerboards = document.querySelectorAll("baseball-playerboard");
+  (() => {
 
-  function changeProperty(property, value) {
-    for (const scoreboard of scoreboards) {
-      scoreboard.setAttribute(property, value);
+    const scoreboards = document.querySelectorAll("baseball-scoreboard");
+    const playerboards = document.querySelectorAll("baseball-playerboard");
+    const field = document.querySelector("baseball-field");
+
+    function changeProperty(property, value) {
+      for (const scoreboard of scoreboards) {
+        scoreboard.setAttribute(property, value);
+      }
+
+      for (const playerboard of playerboards) {
+        playerboard.setAttribute(property, value);
+      }
     }
 
-    for (const playerboard of playerboards) {
-      playerboard.setAttribute(property, value);
+    function changeBase(base, value) {
+      for (const scoreboard of scoreboards) {
+        const bases = scoreboard.getAttribute("bases").split(",").map(v => v === "true");
+
+        bases[base] = value;
+
+        scoreboard.setAttribute("bases", bases);
+      }
     }
-  }
 
-  function changeBase(base, value) {
-    for (const scoreboard of scoreboards) {
-      const bases = scoreboard.getAttribute("bases").split(",").map(v => v === "true");
-
-      bases[base] = value;
-
-      scoreboard.setAttribute("bases", bases);
-    }
-  }
-
+    document.addEventListener("DOMContentLoaded", () => {
+      field.setAttribute("players", JSON.stringify([
+        {
+          name: "Masr Cole",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 1
+        },
+        {
+          name: "Zman Jason",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 2
+        },
+        {
+          name: "Camp Pesc",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 3
+        },
+        {
+          name: "Lion Neebers",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 4
+        },
+        {
+          name: "King Puthermann",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 5
+        },
+        {
+          name: "Fast",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 6
+        },
+        {
+          name: "Hoop",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 7
+        },
+        {
+          name: "Shade",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 8
+        },
+        {
+          name: "Slim",
+          image: "https://s3-eu-west-1.amazonaws.com/static.wbsc.org/uploads/federations/8/photos/229c6fd1-1609-e90b-cd40-6795a6680ac9.jpg",
+          position: 9
+        }
+      ]));
+    });
+  })();
 
 </script>
 

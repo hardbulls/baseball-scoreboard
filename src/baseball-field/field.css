@@ -1,0 +1,36 @@
+.field-background-container {
+}
+
+.field-image-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: min-content;
+}
+
+.field-image-container .marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 64px;
+}
+
+.field-image-container .marker .player-indicator {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    justify-content: center;
+}
+
+.player-indicator .player-image {
+    width: 64px;
+}
+
+.player-indicator .player-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
