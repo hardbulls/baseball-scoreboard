@@ -89,8 +89,8 @@ export const Players = ({
     <div class="container background-dark">
       <div
         class="row  ${battingTeam === "away"
-          ? "background-away"
-          : "background-home"}"
+          ? "background-home"
+          : "background-away"}"
         style="display: flex; justify-content: space-between; "
       >
         <div class="type-name-container">
@@ -106,8 +106,8 @@ export const Players = ({
       </div>
       <div
         class="row  ${battingTeam === "home"
-          ? "background-away"
-          : "background-home"}"
+          ? "background-home"
+          : "background-away"}"
         style="display: flex; justify-content: space-between;"
       >
         <div class="type-name-container">
