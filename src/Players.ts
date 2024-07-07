@@ -54,6 +54,7 @@ export const Players = ({
       .name-row {
         padding-inline: 6px;
         padding-block: 3px;
+        filter: drop-shadow(2px 2px 2px black);
 
         display: flex;
         flex-direction: column;
